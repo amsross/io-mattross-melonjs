@@ -47,6 +47,7 @@ var game = {
 		me.state.set(me.state.PLAY, new game.PlayScreen());
 
 		me.pool.register('mainPlayer', game.PlayerEntity);
+		me.pool.register('CoinEntity', game.CoinEntity);
 
 		// enable the keyboard
 		me.input.bindKey(me.input.KEY.LEFT,  'left');

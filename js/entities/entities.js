@@ -10,9 +10,8 @@ game.PlayerEntity = me.Entity.extend({
 		settings.image = 'bmo';
 
 		settings.width = 16;
-		settings.height = 32;
-		settings.spritewidth = 32;
-		settings.spriteheight = 32;
+		settings.spritewidth = settings.height = 32;
+		settings.spriteheight = settings.height = 32;
 
 		// call the constructor
 		this._super(me.Entity, 'init', [x, y, settings]);
@@ -98,5 +97,40 @@ game.PlayerEntity = me.Entity.extend({
 				}
 			}
 		}
+	}
+});
+
+game.CoinEntity = me.CollectableEntity.extend({
+	// extending the init function is not mandatory
+	// unless you need to add some extra initialization
+	init: function(x, y, settings) {
+
+		settings.image = 'smb_coin';
+		settings.spritewidth = settings.width = 16;
+		settings.spriteheight = settings.height = 16;
+
+		// call the parent constructor
+		this._super(me.CollectableEntity, 'init', [x, y , settings]);
+
+		this.renderable.addAnimation('loop', [0,1,2], 300);
+		this.renderable.setCurrentAnimation('loop');
+
+		// set our collision callback function
+		this.body.onCollision = this.onCollision.bind(this);
+	},
+
+	// this function is called by the engine, when
+	// an object is touched by something (here collected)
+	onCollision: function() {
+		// do something when collected
+
+		// give some score
+		game.data.score += 250;
+
+		// make sure it cannot be collected 'again'
+		this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+
+		// remove it
+		me.game.world.removeChild(this);
 	}
 });

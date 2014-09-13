@@ -7,18 +7,20 @@ game.resources = [
 	 * @example
 	 * {name: 'example', type:'image', src: 'data/img/example.png'},
 	 */
-	 // our level tileset
+	 // tilesets
 	{name: 'smb_1-1', type:'image', src: 'data/img/map/smb_1-1.png'},
 	{name: 'smb_1-1_level_tiles', type:'image', src: 'data/img/map/smb_1-1_level_tiles.png'},
 
-	// our metatiles
+	// metatiles
 	{name: 'metatiles16x16', type:'image', src: 'data/img/map/metatiles16x16.png'},
 
-	// the main player spritesheet
+	// sprites
 	{name: 'bmo', type:'image', src: 'data/img/sprite/bmo.png'},
-    // our enemty entity
-    // game font
+	{name: 'smb_coin', type:'image', src: 'data/img/sprite/smb_coin.png'},
+
+	// fonts
 	{name: '16x16_font', type:'image', src: 'data/img/font/16x16_font.png'},
+
 
 	/* Atlases
 	 * @example
